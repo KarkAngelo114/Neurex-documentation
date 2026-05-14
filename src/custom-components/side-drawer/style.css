@@ -1,0 +1,40 @@
+.side-drawer-parent {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+
+.side-drawer-parent.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.side-drawer {
+  background-color: #fff7f7;
+  height: 100vh;
+  width: 0%; 
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden; 
+}
+
+.side-drawer-parent.active .side-drawer {
+  width: 80%;
+}
+
+.side-drawer-items {
+  width: 100%;
+  padding: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+.side-drawer-parent.active .side-drawer-items {
+  opacity: 1;
+}

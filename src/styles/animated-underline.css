@@ -1,0 +1,23 @@
+:root {
+    --orange: rgb(255, 106, 0);
+}
+
+.animated-orange-underline {
+    position: relative;
+    cursor: pointer;
+}
+
+.animated-orange-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background: var(--orange);
+    transition: width 0.3s ease;
+}
+
+.animated-orange-underline:hover::after {
+    width: 60%;
+}

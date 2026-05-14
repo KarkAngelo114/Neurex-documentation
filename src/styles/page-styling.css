@@ -1,0 +1,160 @@
+
+
+.header-left-branding {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.img-logo {
+    width: 100px;
+}
+
+.hero-section-transparent-background {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.744);
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+    display: grid;
+    place-items: center;
+}
+
+.hero-section-title-container {
+    padding: 10%;
+}
+
+.hero-section-title {
+    font-size: 2.5rem;
+}
+
+.code-snippet-img {
+    width: 100%;
+}
+
+
+.section-1,
+.section-2,
+.banner,
+.contributors-section,
+.footer-section {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    margin-top: 2%;
+}
+
+.section-title {
+    width: 100%;
+    text-align: center;
+}
+
+.box-container-1 {
+    width: 100%;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.box {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    min-height: 150px;
+}
+
+.box p {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: rgb(0, 0, 38);
+}
+
+.box-text-container p {
+    color: rgb(62, 62, 62);
+    font-weight: normal;
+}
+
+.box-container-2 {
+    width: 100%;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap:20px;
+}
+
+.reason-box {
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 15px #0000001c;
+}
+
+.banner {
+    width: 100%;
+    min-height: 300px;
+    color:white;
+    display: grid;
+    place-items: center;
+    text-align: center;
+} 
+
+.explore-more-btn {
+    border-radius: 20px;
+    padding: 25px;
+    background-color: white;
+    cursor: pointer;
+    color: #010136;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    font-size: 1.0rem;
+}
+
+.explore-more-btn:hover {
+    transform: scale(1.1);
+    background-color: #010136;
+    color: white;
+}
+
+.centered-hero-page-title {
+    width: 100%;
+    height: auto;
+    min-height: 350px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color:#010136;
+    background-color: rgb(237, 237, 237);
+    border-bottom: 5px solid orangered;
+}
+
+/* Should be deleted soon */
+.note {
+    width: 100%;
+    height: inherit;
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.contributors-section {
+    min-height: 250px;
+    padding-top: 3%;
+}
+
+.footer-section {
+    padding: 30px;
+}

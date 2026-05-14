@@ -1,0 +1,20 @@
+:root {
+    --round-radius: 20px;
+}
+
+
+.barContainer {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    background-color: rgb(201, 199, 199);
+    border-radius: var(--round-radius);
+}
+
+.filler {
+    box-sizing: border-box;
+    height: 10px;
+    width: 0;
+    border-radius: var(--round-radius);
+}
