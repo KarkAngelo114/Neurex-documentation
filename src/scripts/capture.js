@@ -1,10 +1,11 @@
-
+import { globals } from "./globals"
 
 export const sendCapture = async (image_input) => {
     try {
-        const response = await fetch('http://localhost:3000/api/neurex/detect', {
+        const response = await fetch(`${globals.url}/api/neurex/detect`, {
             method:'POST',
-            body: image_input
+            body: image_input,
+            credentials:"include"
         });
 
         const data = await response.json();
@@ -35,9 +36,10 @@ export const sendCapture = async (image_input) => {
 
 export const sendDrawnImage = async (image_input) => {
     try {
-        const response = await fetch('http://localhost:3000/api/neurex/predict-number', {
+        const response = await fetch(`${globals.url}/api/neurex/predict-number`, {
             method:'POST',
-            body: image_input
+            body: image_input,
+            credentials:"include"
         });
 
         const data = await response.json();
