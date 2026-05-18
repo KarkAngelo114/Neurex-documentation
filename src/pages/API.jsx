@@ -78,8 +78,10 @@ export const API_page = () => {
                                     </div>
 
                                     <p><b>Math Ops</b></p>
-                                    <div style={{marginLeft:'30px'}}>
+                                    <div style={{marginLeft:'20px'}}>
                                         <p><a href="#element-wise-mul"><code>element_wise_mul</code></a></p>
+                                        <p><a href="#element-wise-sub"><code>element_wise_sub</code></a></p>
+                                        <p><a href="#scaleDiff"><code>scaleDiff</code></a></p>
                                         <p><a href="#relu"><code>relu</code></a></p>
                                         <p><a href="#sigmoid"><code>sigmoid</code></a></p>
                                         <p><a href="#tanh"><code>tanh</code></a></p>
