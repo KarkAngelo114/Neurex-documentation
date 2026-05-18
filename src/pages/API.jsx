@@ -908,6 +908,55 @@ console.log(output); // [ 6, 14, 24, 36, 50 ]
                                 </code>
                             </pre>
 
+                            <h2 id = "element-wise-sub"><b><code>element_wise_sub()</code></b></h2>
+                            <p>Use to subtract elements inside both arrays. Requires both arrays has same length.</p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>flat_arr_1 - a flat array input</li>
+                                <li>flat_arr_2 - a flat array input</li>
+                            </ul>
+
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+const { element_wise_sub } = require('neurex');
+
+const a = [0.98, -0.23, 0.34, 0.32, -0.39];
+const b = [-0.84, 0.37, 0.33, 0.19, 0.10];
+
+const output = element_wise_sub(a, b);
+
+console.log(output); // Float32Array(5) [1.82, -0.60, 0.00, 0.12, -0.49]
+
+`}
+                                </code>
+                            </pre>
+
+                            <h2 id = "scaleDiff"><b><code>scaleDiff()</code></b></h2>
+                            <p>A function that takes 3 input arrays and perform subtraction of values from <code>arr1[i]</code> to <code>arr2[i]</code> then multiply to <code>arr3[i]</code></p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>arr1 - a flat array input</li>
+                                <li>arr2 - a flat array input</li>
+                                <li>arr3 - a flat array input</li>
+                            </ul>
+
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+const { scaleDiff } = require('neurex');
+
+const a = [0.98, -0.23, 0.34, 0.32, -0.39];
+const b = [-0.84, 0.37, 0.33, 0.19, 0.10];
+const c = [0.23, 0.2, -1.32, 0.24, -0.24];
+
+const output = scaleDiff(a, b, c); 
+
+console.log(output); // Float32Array(5) [0.41, -0.11, -0.01, 0.03, 0.11]
+`}
+                                </code>
+                            </pre>
+
                             <h2 id = "relu"><b><code>relu()</code></b></h2>
                             <p>ReLu (Rectified Linear Unit) is an activation function where all the values are passed the same and zeroed out negative values</p>
                             <p>Parameters:</p>
