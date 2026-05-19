@@ -114,7 +114,7 @@ export const Demo_1 = () => {
                             audio={false}
                             videoConstraints={videoContraints}
                             ref={webcamRef}
-                            style={{ flexDirection:'column', alignItems:'center', alignItems:'center', width:450}}
+                            style={{ flexDirection:'column', alignItems:'center',width:450}}
                         />
                         {
                             isLoading ? <AnimationLoading/> : 
