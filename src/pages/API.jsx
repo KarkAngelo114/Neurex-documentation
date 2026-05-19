@@ -289,7 +289,9 @@ import { Neurex, Layers } from 'neurex';
 nrx.configure({
     optimizer:'adam',
     learning_rate:0.0001,
-    checkpoint_per_epoch: 10
+    checkpoint_per_epoch: 10,
+    mode: "cpu", /* "gpu" or "auto" */
+    onFloat32Module: true // <- if set to true, it won't use its native bindings and rather use the JS implementation fallback
 });
 `}
                                 </code>
