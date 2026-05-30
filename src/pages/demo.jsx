@@ -9,6 +9,7 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { Horizontal_Bar } from "../custom-components/bars/bars";
 import ProbabilityChart from "../custom-components/chart/chart";
 import { SideDrawer } from "../custom-components/side-drawer";
+import { usePost } from "../scripts/http";
 
 export const Demo_1 = () => {
     const navigate = useNavigate();
@@ -241,9 +242,6 @@ export const Demo_2 = () => {
             </div>
 
             <section className = "digits-recognizer-main-section">
-                <div>
-
-                </div>
                 <div className="writing-pad-main-container">
                     <div style={{minHeight:'100px', width: '100%', display:'grid', placeItems: 'center'}}>
                         <SignatureCanvas
@@ -268,6 +266,59 @@ export const Demo_2 = () => {
                     </div>
                 </div>
             </section>
+        </>
+    );
+}
+
+export const Demo_3 = () => {
+    const navigate = useNavigate();
+    const [text, setText] = useState("");
+    const [res, setRes] = useState({
+        classification: "",
+        score: 0.0
+    });
+
+    const submitText = async () => {
+        const {StatusCode, data} = await usePost('/api/neurex/classify-text', {text:text});
+
+       setRes(data);
+    }
+
+    return (
+        <>
+            <header>
+                <div className="header-left-branding">
+                    <span  className="toShow"></span>
+                    <img src = "nrx-logo.png" className="img-logo"/>
+                    <p>Neurex</p>
+                </div>
+            </header>
+
+            <div style={{paddingLeft:'1%', marginTop: '2%'}}>
+                <div>
+                    <FontAwesomeIcon icon={faArrowAltCircleLeft} size="2x" style={{cursor:'pointer'}} onClick={() => navigate(-1)}/>
+                </div>
+            </div>
+            
+            <div style={{padding:'2%'}}>
+                <p>This demo shows how you can use the library for text classification tasks. However, in this demo, the system doesn't store, retain or use any submitted inputs for logging, analytics and model retraining purposes</p>
+            </div>
+
+            <div className="demo-section">
+                <div className="text-input-div-container">
+                    <p>Enter text input</p>
+                    <div className="text-container">
+                        <input type="text" className="text-input" autoCorrect="false" value={text} onChange={(e) => setText(e.target.value)}/>
+                        <button type="button" className="solar-flare-gradient-bg submit-btn" onClick={() => submitText()}>Submit</button>
+                    </div>
+                    <p style={{fontSize:'0.8rem', color:"gray"}}>* Do not enter passwords or any sensitive credentials.</p>
+                </div>
+                <div className="result-box" style={{padding:'5%'}}>
+                    <p><b>Result</b></p>
+                    <p>Score: {res.score}</p>
+                    <p className={res.score > 0.5 ? "red-text":"green-text"}><b>{res.classification}</b></p>
+                </div>
+            </div>
         </>
     );
 }
@@ -336,6 +387,7 @@ export const Demo_Page = () => {
                             <button type = "button"className="explore-more-btn" onClick={() => navigate('/face-liveliness-tests')} style={{padding:5, borderRadius: 5}}>Try it</button>
                         </div>
                     </div>
+
                     <div className="demo-project-item-box">
                         <div className="thumbnail-container">
                             <img src="hand-written-digits.jpg" className="demo-thumbnail-image"/>
@@ -350,6 +402,22 @@ export const Demo_Page = () => {
                             <button type = "button"className="explore-more-btn" onClick={() => navigate('/digits-recognition')} style={{padding:5, borderRadius: 5}}>Try it</button>
                         </div>
                     </div>
+
+                    <div className="demo-project-item-box">
+                        <div className="thumbnail-container">
+                            <img src="spam.png" className="demo-thumbnail-image"/>
+                        </div>
+                        
+                        <div style={{minHeight: '250px'}}>
+                            <h2>Text Classification (ham vs spam)</h2>
+                            <p>Classify texts/messages if it's a kind of a spam message or legitimate ones.</p>
+                        </div>
+                        <hr></hr>
+                        <div style = {{paddingBottom: '20px'}}>
+                            <button type = "button"className="explore-more-btn" onClick={() => navigate('/spam-ham')} style={{padding:5, borderRadius: 5}}>Try it</button>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 

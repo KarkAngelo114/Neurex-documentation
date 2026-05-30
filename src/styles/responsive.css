@@ -59,7 +59,7 @@
         padding: 0%;
     }
     
-    .camera-main-container, .writing-pad-main-container {
+    .camera-main-container, .writing-pad-main-container, .demo-section {
         flex-direction: column;
         align-items: center;
     }
