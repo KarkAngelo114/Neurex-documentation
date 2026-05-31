@@ -75,6 +75,9 @@ export const API_page = () => {
                                         <p><a href="#onehotencoded" onClick={() => setIsOpen(false)}><code>OneHotEncoded</code></a></p>
                                         <p><a href="#integerlabeling" onClick={() => setIsOpen(false)}><code>IntegerLabeling</code></a></p>
                                         <p><a href="#binarylabeling" onClick={() => setIsOpen(false)}><code>BinaryLabeling</code></a></p>
+                                        <p><a href="#buildVocab"><code>buildVocab</code></a></p>
+                                        <p><a href="#buildWord2Id"><code>buildWord2Id</code></a></p>
+                                        <p><a href="#Encode"><code>Encode</code></a></p>
                                     </div>
 
                                     <p><b>Math Ops</b></p>
@@ -151,6 +154,9 @@ export const API_page = () => {
                                 <p><a href="#onehotencoded"><code>OneHotEncoded</code></a></p>
                                 <p><a href="#integerlabeling"><code>IntegerLabeling</code></a></p>
                                 <p><a href="#binarylabeling"><code>BinaryLabeling</code></a></p>
+                                <p><a href="#buildVocab"><code>buildVocab</code></a></p>
+                                <p><a href="#buildWord2Id"><code>buildWord2Id</code></a></p>
+                                <p><a href="#Encode"><code>Encode</code></a></p>
                             </div>
 
                             <p><b>Math Ops</b></p>
@@ -296,6 +302,22 @@ nrx.configure({
 `}
                                 </code>
                             </pre>
+                            <p>
+                                If the native bindings was able to detect GPU compute, it will print a message that there's a GPU compute available to be utilized. Example below is when you run your training script on <a href = "https://colab.research.google.com/?source=sh%2Fx%2Fsrp%2Fwr%2Fm1%2F0&kgs=0edb28c21003ab0a" style={{textDecoration:"underline"}}>Google Colab </a>
+                                while on T4 runtime
+                            </p>
+
+                            <div style={{fontFamily:'monospace', background:"black", color:'white', padding: '20px', textWrap:'nowrap', overflow:'auto'}}>
+                                <pre>
+{`
+
+⚡ I, /content/drive/MyDrive/project/node_modules/neurex/gpu/gpu_init.js found a device Tesla T4 whose vendor is 
+NVIDIA Corporation with a memory of 14.56 GB.
+Compiling kernels...
+Kernels successfully compiled...`}
+                                </pre>
+
+                            </div>
 
                             <p><b><code>sequentialBuild()</code></b></p>
                             <p>An interface where you can add layers here sequentially</p>
@@ -541,6 +563,26 @@ layer.convolutionalLayer(2, 1, [3, 3], 'relu', 'valid')
                                 </code>
                             </pre>
 
+                            <p><b><code>embeddingLayer()</code></b></p>
+                            <p>
+                                Creates an embedding layer for token encoding. This layer can be added without the need of adding <code>inputShape()</code> before it. Internally, it initialized
+                                a large matrix lookup table where each rows will corresponds to a token ID.
+                            </p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>vocabSize - The size of the vocabulary.</li>
+                                <li>embeddingDim - The size of the dense vector used to represent each token.</li>
+                                <li>maxSequenceLength - The length of the encoded token containing token IDs.</li>
+                            </ul>
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+layer.embeddingLayer(vocabSize = 5000, embeddingDim = 10, maxSequenceLength = 10)
+`}
+                                </code>
+                            </pre>
+
+                            
                             <p><b><code>maxPooling()</code></b></p>
                             <p>Adds a max pooling layer.</p>
                             <p>Parameters:</p>
@@ -882,6 +924,112 @@ const formatted_labels = await BinaryLabeling(labels);
 
 console.log(formatted_labels);
 // [[1],[0],[0],[1]]
+`}
+                                </code>
+                            </pre>
+                        </div>
+
+                        <div id = "buildVocab" className="sub-sections">
+                            <h2><code>buildVocab()</code></h2>
+                            <p>Allows you to tokenized an entire corpus into tokens of words, symbols, numbers and removing duplicated words. It returns an array of tokenized words</p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>corpus - a sentence or an entire corpus</li>
+                            </ul>
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+const path_to_file = path.join(__dirname, "..","dataset","corpus.txt");
+let corpus = await fs.readFile(path_to_file, 'utf-8');
+    
+const vocab = buildVocab(corpus);
+
+console.log(vocab); // ["the", "cat", "cute", "orange", ...]
+`}
+                                </code>
+                            </pre>
+                        </div>
+
+                        <div id = "buildWord2Id" className="sub-sections">
+                            <h2><code>buildWord2Id()</code></h2>
+                            <p>This function assign unique token IDs to tokenized words. These token IDs will be use to <code>Encode</code> input tokenized words.</p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>vocab - An array of tokenized words</li>
+                            </ul>
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+const path_to_file = path.join(__dirname, "..","dataset","corpus.txt");
+let corpus = await fs.readFile(path_to_file, 'utf-8');
+    
+const vocab = buildVocab(corpus);
+const word2id_output = buildWord2Id(vocab);
+
+console.log(word2id_output);
+
+/**
+   {
+        "<PAD>":0,
+        "<UNK>":1
+        the:2,
+        cat:3,
+        cute:4,
+        orange:5,
+        ...
+   }
+*/
+`}
+                                </code>
+                            </pre>
+                        </div>
+
+                        <div id = "Encode" className="sub-sections">
+                            <h2><code>Encode()</code></h2>
+                            <p>
+                                This function tokenize a sentence and assign token IDs returning an array of token IDs. It uses the output of <code>buildWord2Id()</code> to map tokenized words to their corresponding
+                                token IDs. The function returns a vector of token IDs which will be use by the <b>Embedding Layer</b> later on. You can control the token length by passing a <code>max_length</code> value.
+                                This parameter controls the length if it needs to pad the tokenized input or truncate it to match the provided max length.
+                            </p>
+                            <p>Parameters:</p>
+                            <ul>
+                                <li>sentence - input sentence or prompt</li>
+                                <li>buildWord2Id_output - the output after calling <code>buildWord2Id()</code> function. This key-value object will be use to encode the input sentence and assign corresponding token IDs based on based on the words in <b>buildWord2Id_output</b></li>
+                                <li>max_length - The length of the encoded token containing token IDs.</li>
+                            </ul>
+                            <pre>
+                                <code className="language-js" style={{backgroundColor: '#000000'}}>
+{`
+const path_to_file = path.join(__dirname, "..","dataset","corpus.txt");
+let corpus = await fs.readFile(path_to_file, 'utf-8');
+    
+const vocab = buildVocab(corpus);
+const word2id_output = buildWord2Id(vocab);
+
+/**
+   {
+        "<PAD>":0,
+        "<UNK>":1
+        the:2,
+        cat:3,
+        cute:4,
+        orange:5,
+        ...
+   }
+*/
+
+const input = [Encode("The cute orange cat is cute", word2id_output, 10)];
+
+console.log(input);
+
+/**
+[
+    [2, 4, 3, 1, 4, 0, 0, 0, 0, 0] <- we pad it with remaining five 0s because the max length value is 10.
+]
+
+Notice that there is 1 in the token array is because the word "is" is not present in tbe vocab. 
+So it is assigned to token ID 1 which corresponds to "<UNK>" 
+*/
 `}
                                 </code>
                             </pre>

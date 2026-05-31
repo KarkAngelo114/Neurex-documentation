@@ -10,6 +10,9 @@ import { Horizontal_Bar } from "../custom-components/bars/bars";
 import ProbabilityChart from "../custom-components/chart/chart";
 import { SideDrawer } from "../custom-components/side-drawer";
 import { usePost } from "../scripts/http";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 export const Demo_1 = () => {
     const navigate = useNavigate();
@@ -273,15 +276,29 @@ export const Demo_2 = () => {
 export const Demo_3 = () => {
     const navigate = useNavigate();
     const [text, setText] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const [res, setRes] = useState({
         classification: "",
         score: 0.0
     });
 
     const submitText = async () => {
-        const {StatusCode, data} = await usePost('/api/neurex/classify-text', {text:text});
+        setIsLoading(true);
+        const {StatusCode, data, message} = await usePost('/api/neurex/classify-text', {text:text});
 
-       setRes(data);
+        if (StatusCode != 200) {
+            toast.error(message);
+            setIsLoading(false);
+            return;
+        }
+
+        setTimeout(() => {
+            setIsLoading(false);
+            setRes(data);
+        }, 1500);
+        
+        
+        
     }
 
     return (
@@ -309,7 +326,10 @@ export const Demo_3 = () => {
                     <p>Enter text input</p>
                     <div className="text-container">
                         <input type="text" className="text-input" autoCorrect="false" value={text} onChange={(e) => setText(e.target.value)}/>
-                        <button type="button" className="solar-flare-gradient-bg submit-btn" onClick={() => submitText()}>Submit</button>
+                        {
+                            !isLoading ? <button type="button" className="solar-flare-gradient-bg submit-btn" onClick={() => submitText()}>Submit</button> :
+                            (<FontAwesomeIcon icon={faSpinner} spin size="2x"/>)
+                        }
                     </div>
                     <p style={{fontSize:'0.8rem', color:"gray"}}>* Do not enter passwords or any sensitive credentials.</p>
                 </div>

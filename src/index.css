@@ -25,7 +25,7 @@ header {
   justify-content: space-between;
   align-items: center;
   gap:5%;
-  z-index: 10000;
+  z-index: 9000;
   background-color: white;
   user-select: none;
 }

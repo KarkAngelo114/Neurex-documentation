@@ -5,6 +5,7 @@ import { ModelsPage } from './pages/models-page';
 import { API_page } from './pages/API';
 import { Demo_1, Demo_2, Demo_3, Demo_Page } from './pages/demo';
 import { Analytics } from "@vercel/analytics/react"
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   const ScrollTop = () => {
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollTop/>
+      <ToastContainer position="top-right" autoClose={3000} style={{zIndex:10000}}/>
       <Routes>
         <Route path = "/" element = {<Home/>}/>
         <Route path= "/models" element = {<ModelsPage/>}/>
