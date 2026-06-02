@@ -1,4 +1,4 @@
-import { faBars, faNetworkWired, faRocket, faSyncAlt } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp, faBars, faChevronUp, faNetworkWired, faRocket, faSyncAlt, faWebAwesome } from "@fortawesome/free-solid-svg-icons";
 import { fetch_contributor, fetch_package_stats, NavigateTo } from "../scripts";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { SideDrawer } from "../custom-components/side-drawer";
 import { motion } from "framer-motion";
 import { Parallax } from '../custom-components/parallaxBG';
+import {Dropdown, DropdownOption} from '../custom-components/dropdown';
 
 
 export const Home = () => {
@@ -17,6 +18,7 @@ export const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [downloads, setDownloads] = useState(0);
     const [scrolly, setScrollY] = useState(0);
+    const [isDropdownClicked, setIsDropDownClicked] = useState(false);
     const [contributors_pfp, set_constributor_pfp] = useState([
         "https://randomuser.me/api/portraits/men/1.jpg",
         "https://randomuser.me/api/portraits/women/2.jpg",
@@ -65,7 +67,7 @@ export const Home = () => {
                             <p>Neurex</p>
                         </div>
                         <p className="animated-orange-underline current-highlighted">Overview</p>
-                        <p className="animated-orange-underline" onClick={() => navigate("/api")}>Guide</p>
+                        <p className="animated-orange-underline" onClick={() => navigate("/javascript-nodejs")}>Guide</p>
                         <p className="animated-orange-underline" onClick={() => navigate("/models")}>Models</p>
                         <p className="animated-orange-underline" onClick={() => navigate('/demo')}>Demos</p>
                         <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex')}>Github</p>
@@ -76,18 +78,31 @@ export const Home = () => {
 
                 <div className="nav toHide">
                     <p className="animated-orange-underline current-highlighted">Overview</p>
-                    <p className="animated-orange-underline" onClick={() => navigate("/api")}>Guide</p>
+                    <p className="animated-orange-underline" onClick={() => navigate("/javascript-nodejs")}>Guide</p>
                     <p className="animated-orange-underline" onClick={() => navigate("/models")}>Models</p>
                     <p className="animated-orange-underline" onClick={() => navigate('/demo')}>Demos</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex')}>Github</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://www.npmjs.com/package/neurex')}>NPM</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex/blob/main/CHANGELOG.md')}>Changelog</p>
+                    <Dropdown
+                        bg="#00000000"
+                        fg={scrolly > 120 ?"black": "white"}
+                        isClicked={isDropdownClicked}
+                        action={() => setIsDropDownClicked(!isDropdownClicked)}
+                        component_label={<p className="animated-orange-underline">More <FontAwesomeIcon icon={faChevronUp} style={{
+                            transform: isDropdownClicked ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.3s ease'
+                            }}/></p>}
+                        dropdownWidth="250"
+                        textAlign={'left'}
+                    >
+                        <DropdownOption onHoverBackgroundColor="#e2e1e1" onHoverFontColor="black" action={() => navigate("/convert-to-json")}>
+                            <p style={{fontSize:"0.9rem", fontWeight:600}}>Convert .nrx models to JSON</p>
+                            <p style={{fontSize:"0.8rem", color:'gray'}}>Convert your <code>nrx</code> models for browser inferencing</p>
+                        </DropdownOption>
+                    </Dropdown>
                 </div>
             </header>
-
-            {/* <section className="hero-section-BG">
-                
-            </section> */}
 
             <Parallax image={"ANN.png"}>
                 <div className="hero-section-transparent-background" style={{paddingTop:"10%", color:'white'}}>
@@ -117,7 +132,7 @@ export const Home = () => {
                     >
                         <div className="box">
                             <FontAwesomeIcon icon={faNetworkWired} style={iconStyle}/>
-                            <p>Build Neural network models on Javascript</p>
+                            <p>Build neural network models on Javascript</p>
                             <div className="box-text-container">
                                 <p>Build and train models using intuitive APIs. </p>
                             </div>
@@ -147,7 +162,7 @@ export const Home = () => {
                             <FontAwesomeIcon icon={faRocket} style={iconStyle}/>
                             <p>Deploy to your applications</p>
                             <div className="box-text-container">
-                                <p>Deploy to your backend applications with ease.</p>
+                                <p>Deploy to your applications, whether on your backend NodeJS app or run directly in your browser.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -194,9 +209,24 @@ export const Home = () => {
                 </div>
             </section>
 
+            <div className="web-info-container">
+                <div className = "web-image-container">
+                    <img src = "/web.png" className="web-image"/>
+                </div>
+                <div style={{width:'100%'}}>
+                    <h1>Bring Intelligence right on your browser</h1>
+                    <br/>
+
+                    <p style={{fontSize:"1.3rem"}}>Deploy and use trained models directly on your browsers with ease.</p>
+                    
+                    <br/>
+                    <a href="/javascript-browser" style={{textDecoration:"underline"}}>Learn more <FontAwesomeIcon icon={faArrowUp} transform={{ rotate: 42 }}/></a>
+                </div>
+            </div>
+
             <section className="banner solar-flare-gradient-bg">
                 <h1>Get started with NeurexJS</h1>
-                <button type = "button"className="explore-more-btn" onClick={() => navigate('/api')}>Explore Tutorials</button>
+                <button type = "button"className="explore-more-btn" onClick={() => navigate('/javascript-nodejs')}>Explore Tutorials</button>
             </section>
 
             <section className="contributors-section" style={{ padding: "20px" }}>

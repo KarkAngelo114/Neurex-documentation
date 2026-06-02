@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/home';
 import { ModelsPage } from './pages/models-page';
-import { API_page } from './pages/API';
-import { Demo_1, Demo_2, Demo_3, Demo_Page } from './pages/demo';
+import { Javascript_Node } from './pages/API_1';
+import { Demo_1, Demo_2, Demo_3, Demo_4, Demo_Page } from './pages/demo';
 import { Analytics } from "@vercel/analytics/react"
 import { ToastContainer } from 'react-toastify';
+import { Convert } from './pages/conversion';
+import { Javascript_Browser } from './pages/API_2';
 
 const App = () => {
   const ScrollTop = () => {
@@ -26,11 +28,14 @@ const App = () => {
       <Routes>
         <Route path = "/" element = {<Home/>}/>
         <Route path= "/models" element = {<ModelsPage/>}/>
-        <Route path = "/api" element = {<API_page/>}/>
+        <Route path = "/javascript-nodejs" element = {<Javascript_Node/>}/>
+        <Route path='/javascript-browser' element={<Javascript_Browser/>}/>
         <Route path='/demo' element = {<Demo_Page/>}/>
         <Route path='/face-liveliness-tests' element={<Demo_1/>}/>
         <Route path='/digits-recognition' element = {<Demo_2/>}/>
         <Route path= "/spam-ham" element = {<Demo_3/>}/>
+        <Route path="/convert-to-json" element={<Convert/>}/>
+        <Route path='/XOR' element={<Demo_4/>}/>
       </Routes>
       <Analytics />
     </BrowserRouter>

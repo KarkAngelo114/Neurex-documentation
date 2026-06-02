@@ -1,0 +1,61 @@
+.hero-section-box {
+    width: 100%;
+    height: auto;
+    min-height: 350px;
+}
+
+.hero-section-splash-text {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.splash-text-container {
+    text-align: left;
+}
+
+.splash{
+    background: url('/converter-splash-screen.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.file-input {
+  color: #4a5568;
+  font-family: sans-serif;
+}
+
+.file-input::file-selector-button {
+  background-color: #3182ce;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.file-input::file-selector-button:hover {
+  background-color: #2b6cb0;
+}
+
+.convert-btn, .reset-btn {
+    padding: 10px;
+    border: 1px solid orangered;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.convert-btn:hover {
+    border: 1px solid transparent;
+    background-color: orangered;
+    color: white;
+}
+
+.reset-btn:hover {
+    transform: scale(1.05);
+}

@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { NavigateTo } from "../scripts";
 import { useEffect, useState } from "react";
 import { SideDrawer } from "../custom-components/side-drawer";
+import { Dropdown, DropdownOption } from "../custom-components/dropdown";
 
 
-export const API_page = () => {
+export const Javascript_Node = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownClicked, setIsDropDownClicked] = useState(false);
 
     useEffect(() => {
         window.hljs.highlightAll();
@@ -123,8 +125,35 @@ export const API_page = () => {
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex')}>Github</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://www.npmjs.com/package/neurex')}>NPM</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex/blob/main/CHANGELOG.md')}>Changelog</p>
+                    <Dropdown
+                        bg="#00000000"
+                        fg="black"
+                        isClicked={isDropdownClicked}
+                        action={() => setIsDropDownClicked(!isDropdownClicked)}
+                        component_label={<p className="animated-orange-underline">More <FontAwesomeIcon icon={faChevronUp} style={{
+                            transform: isDropdownClicked ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.3s ease'
+                        }}/></p>}
+                        dropdownWidth="250"
+                        textAlign={'left'}
+                    >
+                        <DropdownOption onHoverBackgroundColor="#e2e1e1" onHoverFontColor="black" action={() => navigate("/convert-to-json")}>
+                            <p style={{fontSize:"0.9rem", fontWeight:600}}>Convert .nrx models to JSON</p>
+                            <p style={{fontSize:"0.8rem", color:'gray'}}>Convert your <code>nrx</code> models for browser inferencing</p>
+                        </DropdownOption>
+                    </Dropdown>
                 </div>
             </header>
+            
+            <div className="top-ribbon">
+                <div className="ribbon-nav">
+                    <p className="animated-orange-underline current-highlighted">NodeJS</p>
+                    <p className="animated-orange-underline" onClick={() => navigate('/javascript-browser')}>Browser-based</p>
+                </div>
+            </div>
+            <div className="ribbon">
+                <p>Javascript (NodeJS)</p>
+            </div>
 
             <section className = "main-wrapper">
                 <div className="navigation toHide">
@@ -198,16 +227,14 @@ export const API_page = () => {
                        <h1 className="orange-accent-underline">Installation Guide</h1>
                        <p>Install via NPM:</p>
 
-                        <div style={{padding: '10px', borderRadius:10, backgroundColor:'gray', color:'white', width:'100%'}}>
+                        <div style={{padding: '10px', borderRadius:10, backgroundColor:'#1e1e1e', color:'white', width:'100%'}}>
                             <code>
                                 npm install neurex
                             </code>
                         </div>
-                        
-                        <p>You must have NodeJS installed to your machine. In case you haven't install it, download it <a href = "https://nodejs.org/en/download">here</a></p>
 
                         <p>You may also install via Github directly</p>
-                        <div style={{padding: '10px', borderRadius:10, backgroundColor:'gray', color:'white', width:'100%', overflow:'auto'}}>
+                        <div style={{padding: '10px', borderRadius:10, backgroundColor:'#1e1e1e', color:'white', width:'100%', overflow:'auto'}}>
                             <div style={{width:"500px"}}>
                                 <code>
                                     npm install git+https://github.com/KarkAngelo114/Neurex.git
@@ -1997,7 +2024,7 @@ const { Neurex, Layers, templates } = require('neurex');
     nrx.sequentialBuild([
         layer.inputShape({features: 3}),
         ...templates.simpleNeuralNetwork(), // this consists of 3 hidden layers having 5 neurons each
-        layer.connectedLayer('sigmoid', 3)
+        layer.connectedLayer('sigmoid', 1)
     ]);
 
 })(); 
@@ -2026,9 +2053,9 @@ const { Neurex, Layers, templates } = require('neurex');
     const layer = new Layers()
 
     nrx.sequentialBuild([
-        layer.inputShape({features: 3}),
+        layer.inputShape({height: 224, width: 224, depth: 3}),
         ...templates.simpleCNN(), // drops in a simple convolutional neural network
-        layer.connectedLayer('sigmoid', 3)
+        layer.connectedLayer('softmax', 3)
     ]);
 
 })(); 

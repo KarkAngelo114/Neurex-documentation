@@ -1,14 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { NavigateTo } from "../scripts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faFrown } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChevronUp, faFrown } from "@fortawesome/free-solid-svg-icons";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { SideDrawer } from "../custom-components/side-drawer";
+import { Dropdown, DropdownOption } from "../custom-components/dropdown";
 
 export const ModelsPage = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const [isDropdownClicked, setIsDropDownClicked] = useState(false);
     return (
         <>
             <header>
@@ -27,7 +29,7 @@ export const ModelsPage = () => {
                         <p>Neurex</p>
                     </div>
                     <p className="animated-orange-underline" onClick={() => navigate("/")}>Overview</p>
-                    <p className="animated-orange-underline" onClick={() => navigate("/api")}>Guide</p>
+                    <p className="animated-orange-underline" onClick={() => navigate("/javascript-nodejs")}>Guide</p>
                     <p className="animated-orange-underline current-highlighted">Models</p>
                     <p className="animated-orange-underline" onClick={() => navigate('/demo')} >Demos</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex')}>Github</p>
@@ -37,12 +39,29 @@ export const ModelsPage = () => {
 
                 <div className="nav toHide">
                     <p className="animated-orange-underline" onClick={() => navigate("/")}>Overview</p>
-                    <p className="animated-orange-underline" onClick={() => navigate("/api")}>Guide</p>
+                    <p className="animated-orange-underline" onClick={() => navigate("/javascript-nodejs")}>Guide</p>
                     <p className="animated-orange-underline current-highlighted">Models</p>
                     <p className="animated-orange-underline" onClick={() => navigate('/demo')} >Demos</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex')}>Github</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://www.npmjs.com/package/neurex')}>NPM</p>
                     <p className="animated-orange-underline" onClick={() => NavigateTo('https://github.com/KarkAngelo114/Neurex/blob/main/CHANGELOG.md')}>Changelog</p>
+                    <Dropdown
+                        bg="#00000000"
+                        fg="black"
+                        isClicked={isDropdownClicked}
+                        action={() => setIsDropDownClicked(!isDropdownClicked)}
+                        component_label={<p className="animated-orange-underline">More <FontAwesomeIcon icon={faChevronUp} style={{
+                            transform: isDropdownClicked ? 'rotate(180deg)' : 'rotate(0deg)',
+                            transition: 'transform 0.3s ease'
+                        }}/></p>}
+                        dropdownWidth="250"
+                        textAlign={'left'}
+                    >
+                        <DropdownOption onHoverBackgroundColor="#e2e1e1" onHoverFontColor="black" action={() => navigate("/convert-to-json")}>
+                            <p style={{fontSize:"0.9rem", fontWeight:600}}>Convert .nrx models to JSON</p>
+                            <p style={{fontSize:"0.8rem", color:'gray'}}>Convert your <code>nrx</code> models for browser inferencing</p>
+                        </DropdownOption>
+                    </Dropdown>                    
                 </div>
             </header>
 
@@ -65,7 +84,7 @@ export const ModelsPage = () => {
 
             <section className="banner solar-flare-gradient-bg">
                 <h1>Get started with NeurexJS</h1>
-                <button type = "button"className="explore-more-btn" onClick = {() => navigate('/api')}>Explore Tutorials</button>
+                <button type = "button"className="explore-more-btn" onClick = {() => navigate('/javascript-nodejs')}>Explore Tutorials</button>
             </section>
 
             <section className="footer-section">

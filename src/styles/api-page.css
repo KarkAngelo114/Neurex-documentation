@@ -12,6 +12,35 @@
     align-self: start;
 }
 
+.top-ribbon {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  font-weight: 600;
+  overflow: auto;
+  flex-wrap: nowrap;
+}
+
+.ribbon-nav{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.ribbon {
+  padding: 10px;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  background-color: #16162a;
+  color: white;
+  font-weight: 600;
+}
+
 aside {
     height: 80vh;
     overflow-y: scroll;

@@ -1,0 +1,95 @@
+{
+  "task": "binary_classification",
+  "loss_function": "binary_cross_entropy",
+  "epoch": 1000,
+  "batch_size": 2,
+  "optimizer": "adam",
+  "learning_rate": 0.1,
+  "layers": [
+    {
+      "layer_name": "connected_layer",
+      "activation_function_name": "relu",
+      "derivative_activation_function_name": "drelu",
+      "layer_size": 4,
+      "padding": "",
+      "filters": 0,
+      "strides": 0,
+      "kernel_size": [
+        0,
+        0
+      ],
+      "weightShape": [
+        2,
+        4
+      ],
+      "inputShape": [],
+      "outputShape": [
+        1,
+        1,
+        4
+      ],
+      "poolSize": []
+    },
+    {
+      "layer_name": "connected_layer",
+      "activation_function_name": "sigmoid",
+      "derivative_activation_function_name": "dsigmoid",
+      "layer_size": 1,
+      "padding": "",
+      "filters": 0,
+      "strides": 0,
+      "kernel_size": [
+        0,
+        0
+      ],
+      "weightShape": [
+        4,
+        1
+      ],
+      "inputShape": [],
+      "outputShape": [
+        1,
+        1,
+        1
+      ],
+      "poolSize": []
+    }
+  ],
+  "input_size": 2,
+  "input_shape": [
+    1,
+    1,
+    2
+  ],
+  "output_size": 0,
+  "num_layers": 2,
+  "weights": [
+    [
+      -7.75063943862915,
+      -0.014136271551251411,
+      -6.349562644958496,
+      19.936187744140625,
+      7.747435092926025,
+      0.07569403946399689,
+      6.3496785163879395,
+      -19.93575096130371
+    ],
+    [
+      1.0982996225357056,
+      0.40536972880363464,
+      0.8525022864341736,
+      0.6291335821151733
+    ]
+  ],
+  "biases": [
+    [
+      -0.0042151352390646935,
+      -0.07815293222665787,
+      -0.0007082135998643935,
+      0.0005915574729442596
+    ],
+    [
+      -6.462741374969482
+    ]
+  ]
+}

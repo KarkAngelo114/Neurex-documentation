@@ -41,8 +41,12 @@
         gap: 10px;
     }
 
-    .box-container-1 {
+    .box-container-1, .web-info-container {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .web-image-container {
+        min-height: 150px;
     }
 
     .main-container {

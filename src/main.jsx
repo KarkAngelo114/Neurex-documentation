@@ -10,6 +10,7 @@ import './styles/animated-underline.css';
 import './styles/gradient-text.css';
 import './styles/gradient-background.css';
 import './styles/api-page.css';
+import './styles/conversion.css';
 import './styles/responsive.css';
 
 createRoot(document.getElementById('root')).render(

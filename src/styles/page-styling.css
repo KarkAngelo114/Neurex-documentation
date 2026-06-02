@@ -107,7 +107,30 @@
     display: grid;
     place-items: center;
     text-align: center;
-} 
+}
+
+.web-info-container {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    gap: 50px;
+    padding: 20px;
+}
+
+.web-image-container {
+    width: 100%;
+    height: auto;
+    min-height: 450px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.web-image {
+    width: 100%;
+    filter: drop-shadow(8px 8px 10px rgba(0, 0, 0, 0.5));
+}
 
 .explore-more-btn {
     border-radius: 20px;
