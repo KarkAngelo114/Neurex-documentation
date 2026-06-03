@@ -74,6 +74,8 @@ export const Convert = () => {
             const decompressedResponse = new Response(responseStream);
             const jsonText = await decompressedResponse.text();
 
+            console.log(jsonText);
+
             // 7. Parse string into your model configuration object
             const modelJSON = JSON.parse(jsonText);
 

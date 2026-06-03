@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/home';
 import { ModelsPage } from './pages/models-page';
 import { Javascript_Node } from './pages/API_1';
-import { Demo_1, Demo_2, Demo_3, Demo_4, Demo_Page } from './pages/demo';
+import { Demo_1, Demo_2, Demo_3, Demo_4, Demo_5, Demo_Page } from './pages/demo';
 import { Analytics } from "@vercel/analytics/react"
 import { ToastContainer } from 'react-toastify';
 import { Convert } from './pages/conversion';
@@ -34,8 +34,10 @@ const App = () => {
         <Route path='/face-liveliness-tests' element={<Demo_1/>}/>
         <Route path='/digits-recognition' element = {<Demo_2/>}/>
         <Route path= "/spam-ham" element = {<Demo_3/>}/>
-        <Route path="/convert-to-json" element={<Convert/>}/>
         <Route path='/XOR' element={<Demo_4/>}/>
+        <Route path='/ai-snake-game' element={<Demo_5/>}/>
+        <Route path="/convert-to-json" element={<Convert/>}/>
+        
       </Routes>
       <Analytics />
     </BrowserRouter>
