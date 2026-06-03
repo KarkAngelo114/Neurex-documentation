@@ -535,7 +535,7 @@ export const Demo_Page = () => {
 
             <section className="demo-list-section">
                 <div className="demo-list">
-                    <div className="demo-project-item-box">
+                    <div className="demo-project-item-box" onClick={() => navigate('/face-liveliness-tests')}>
                         <div className="thumbnail-container">
                             <img src = "face-detection.jpg" className="demo-thumbnail-image" alt="https://www.freepik.com/free-vector/woman-face-scan-process_5597103.htm#fromView=search&page=1&position=18&uuid=d515bfb6-97bc-4aac-88bb-e73fbc511d9a&query=Face+detection+real+vs+fake+thumbnail+BG"/>
                         </div>
@@ -544,13 +544,10 @@ export const Demo_Page = () => {
                             <p>Learn how a well-trained CNN model classify between genuine (live) or fake (spoofed) face image</p>
 
                         </div>
-                        <hr></hr>
-                        <div>
-                            <button type = "button"className="explore-more-btn" onClick={() => navigate('/face-liveliness-tests')} style={{padding:5, borderRadius: 5}}>Try it</button>
-                        </div>
+                        <hr/>
                     </div>
 
-                    <div className="demo-project-item-box">
+                    <div className="demo-project-item-box" onClick={() => navigate('/digits-recognition')}>
                         <div className="thumbnail-container">
                             <img src="hand-written-digits.jpg" className="demo-thumbnail-image"/>
                         </div>
@@ -559,13 +556,10 @@ export const Demo_Page = () => {
                             <h2>Hand Written Digits Recognizer</h2>
                             <p>An interactive demo where you can hand written a single digits and let the model predict what number your wrote.</p>
                         </div>
-                        <hr></hr>
-                        <div style = {{paddingBottom: '20px'}}>
-                            <button type = "button"className="explore-more-btn" onClick={() => navigate('/digits-recognition')} style={{padding:5, borderRadius: 5}}>Try it</button>
-                        </div>
+                        <hr/>
                     </div>
 
-                    <div className="demo-project-item-box">
+                    <div className="demo-project-item-box" onClick={() => navigate('/spam-ham')}>
                         <div className="thumbnail-container">
                             <img src="spam.png" className="demo-thumbnail-image"/>
                         </div>
@@ -574,13 +568,10 @@ export const Demo_Page = () => {
                             <h2>Text Classification (ham vs spam)</h2>
                             <p>Classify texts/messages if it's a kind of a spam message or legitimate ones.</p>
                         </div>
-                        <hr></hr>
-                        <div style = {{paddingBottom: '20px'}}>
-                            <button type = "button"className="explore-more-btn" onClick={() => navigate('/spam-ham')} style={{padding:5, borderRadius: 5}}>Try it</button>
-                        </div>
+                        <hr/>
                     </div>
 
-                    <div className="demo-project-item-box">
+                    <div className="demo-project-item-box" onClick={() => navigate('/XOR')}>
                         <div className="thumbnail-container">
                             <img src="xor.png" className="demo-thumbnail-image"/>
                         </div>
@@ -589,10 +580,7 @@ export const Demo_Page = () => {
                             <h2>XOR</h2>
                             <p>Flick switches to add signal and let the trained model outputs an XOR predictions</p>
                         </div>
-                        <hr></hr>
-                        <div style = {{paddingBottom: '20px'}}>
-                            <button type = "button"className="explore-more-btn" onClick={() => navigate('/XOR')} style={{padding:5, borderRadius: 5}}>Try it</button>
-                        </div>
+                        <hr/>
                     </div>
 
                 </div>

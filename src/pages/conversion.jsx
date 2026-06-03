@@ -141,7 +141,7 @@ export const Convert = () => {
                 </div>
             </header>
 
-            <div className="box-container-2">
+            <div className="conversion-ui-parent-container">
                 <div className="hero-section-box hero-section-splash-text">
                     <div className="splash-text-container">
                         <h1>Convert <code>.nrx</code> models to JSON</h1>
@@ -166,7 +166,9 @@ export const Convert = () => {
                         )}
                     </div>
                 </div>
-                <div className="hero-section-box splash"></div>
+                <div className="hero-section-box">
+                    <img src = "/converter-splash-screen.png" className="splash"/>
+                </div>
             </div>
 
             <section className="banner solar-flare-gradient-bg">

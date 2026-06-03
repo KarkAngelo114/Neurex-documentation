@@ -76,4 +76,13 @@
     .demo-list {
         grid-template-columns: repeat(1, 1fr) ;
     }
+
+    .conversion-ui-parent-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
+    .hero-section-box {
+        min-height: 150px;
+    }
 }

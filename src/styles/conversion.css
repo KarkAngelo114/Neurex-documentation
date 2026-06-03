@@ -1,3 +1,13 @@
+.conversion-ui-parent-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap:10px;
+    padding: 20px;
+}
+
 .hero-section-box {
     width: 100%;
     height: auto;
@@ -14,13 +24,13 @@
     text-align: left;
 }
 
-.splash{
-    background: url('/converter-splash-screen.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
 
+
+.splash{
+    width: 100%;
+    object-fit: cover;
 }
+
 .file-input {
   color: #4a5568;
   font-family: sans-serif;
