@@ -286,7 +286,7 @@ export const Demo_3 = () => {
 
     const submitText = async () => {
         setIsLoading(true);
-        const {StatusCode, data, message} = await usePost('/javascript-nodejs/neurex/classify-text', {text:text});
+        const {StatusCode, data, message} = await usePost('/api/neurex/classify-text', {text:text});
 
         if (StatusCode != 200) {
             toast.error(message);
