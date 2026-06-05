@@ -12,6 +12,7 @@ import './styles/gradient-background.css';
 import './styles/api-page.css';
 import './styles/conversion.css';
 import './styles/snake.css';
+import './styles/car.css';
 import './styles/responsive.css';
 
 createRoot(document.getElementById('root')).render(

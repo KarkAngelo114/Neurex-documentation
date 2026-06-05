@@ -20,15 +20,15 @@ ChartJS.register(
     Legend
 );
 
-const ProbabilityChart = ({ probabilities }) => {
+const ProbabilityChart = ({ probabilities, graphTitle }) => {
   const data = {
     labels: probabilities.map((_, index) => `${index}`),
     datasets: [
       {
-        label: "Predicted Probability",
+        label: graphTitle || "Chart",
         data: probabilities,
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "#4bc0c099",
+        borderColor: "#4bc0c0",
         borderWidth: 1,
       },
     ],

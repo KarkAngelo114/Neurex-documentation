@@ -85,4 +85,24 @@
     .hero-section-box {
         min-height: 150px;
     }
+
+    .snake-game-parent-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .car-simulation-parent-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .car-simulation-screen {
+        min-height: 500px;
+    }
+
+    .model-output-panel {
+        width: 100%;
+    }
 }
