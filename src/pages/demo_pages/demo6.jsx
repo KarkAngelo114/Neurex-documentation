@@ -107,10 +107,12 @@ export const ManualDriving = () => {
             const sensorColumnsCount = sampleRowLength - 1; 
             
             const headers = [];
+
+            headers.push("control_label");
             for (let i = 1; i <= sensorColumnsCount; i++) {
                 headers.push(`sensor_${i}`);
             }
-            headers.push("control_label");
+           
             
             csvContent += headers.join(",") + "\n";
             
@@ -304,7 +306,7 @@ export const ManualDriving = () => {
 
             player.sensors = computedSensors;
 
-            dataset.push([...computedSensors, currentLabel]);
+            dataset.push([ currentLabel, ...computedSensors]);
             setDataCount(dataset.length);
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);
