@@ -50,7 +50,7 @@ export const Demo_3 = () => {
                 <div className="header-left-branding">
                     <span  className="toShow"></span>
                     <img src = "nrx-logo.png" className="img-logo"/>
-                    <p>Neurex</p>
+                    <p>Text Classification</p>
                 </div>
             </header>
 

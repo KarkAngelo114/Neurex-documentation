@@ -91,7 +91,7 @@ export const Demo_1 = () => {
                 <div className="header-left-branding">
                     <span  className="toShow"></span>
                     <img src = "nrx-logo.png" className="img-logo"/>
-                    <p>Neurex</p>
+                    <p>Genuine vs Spoofed</p>
                 </div>
             </header>
 

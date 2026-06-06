@@ -219,7 +219,7 @@ export const Demo_5 = () => {
                 <div className="header-left-branding">
                     <span className="toShow"></span>
                     <img src="nrx-logo.png" className="img-logo" alt="logo"/>
-                    <p>Neurex</p>
+                    <p>Snake Game</p>
                 </div>
             </header>
 
