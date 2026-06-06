@@ -79,7 +79,7 @@ export const ManualDriving = () => {
         let traffic = [];
         let spawnTimer = 0;
         let initialSpawnInterval = 80;  // ← lower this (e.g. 60)
-        let minimumSpawnInterval = 25;   // ← lower this (e.g. 15)
+        let minimumSpawnInterval = 35;   // ← lower this (e.g. 15)
 
         const handleKeyDown = (e) => {
             if (e.key in keys) {
@@ -515,13 +515,13 @@ export const Demo_6 = () => {
 
         let traffic = [];
         let spawnTimer = 0;
-        let initialSpawnInterval = 100;  // ← lower this (e.g. 60)
+        let initialSpawnInterval = 80;  // ← lower this (e.g. 60)
         let minimumSpawnInterval = 45;   // ← lower this (e.g. 15)
         let frameCount = 0; // Local counter to scale difficulty since dataset array is removed
 
         const checkCollision = (rect1, rect2) => {
             const paddingX = 30;
-            const paddingY = 8;
+            const paddingY = 10;
             return (
                 (rect1.x + paddingX) < (rect2.x + rect2.width - paddingX) &&
                 (rect1.x + rect1.width - paddingX) > (rect2.x + paddingX) &&
@@ -600,7 +600,7 @@ export const Demo_6 = () => {
                     aiCommand = predictions[0]; 
                 }
 
-                let controls = ["neutral", "left", "right"];
+                let controls = ["neutral", "right", "left"];
 
                 let formattedPred = Array.from(predictions[0]);
                 setRawModelOutput(formattedPred);
